@@ -6,10 +6,7 @@ package stu.lwhao.springbootdemo.controller;
  * @Project : springbootdemo
  */
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import stu.lwhao.springbootdemo.entity.User;
 import stu.lwhao.springbootdemo.service.UserService;
 
@@ -25,9 +22,14 @@ public class StudentsController {
         return userService.getAllUsers();
     }
 
-    @PostMapping("/add")
+    @PostMapping("/students/add")
     public User createUser(@RequestBody User user) {
         userService.saveUser(user);
         return user;
+    }
+
+    @GetMapping("/students/search")
+    public List<User> searchUsersByName(@RequestParam String name) {
+        return userService.searchUsersByName(name);
     }
 }

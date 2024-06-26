@@ -32,4 +32,11 @@ public class UserService {
         userMapper.insert(user);
     }
 
+    // 模糊查询方法
+    public List<User> searchUsersByName(String name) {
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.like("name", name);
+        return userMapper.selectList(queryWrapper);
+    }
+
 }
