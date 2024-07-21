@@ -32,4 +32,10 @@ public class StudentsController {
     public List<User> searchUsersByName(@RequestParam String name) {
         return userService.searchUsersByName(name);
     }
+
+    @DeleteMapping("/students/{id}")
+    public void deleteUser(@PathVariable int id) {
+        userService.deleteUserById(id);
+    }
+
 }
